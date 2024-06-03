@@ -17,10 +17,17 @@ nano /etc/network/interfaces
     iface "eth1" inet static
         address "10.10.10.10/30"
 
+    nano /etc/networking/
     #eintragen einer persistenten statischen Route   
     post-up ip route add "192.168.0.0/24" via "10.10.10.9"
-    
+
+    #Routing aktiviern
+    nano /etc/sysctl.conf
+    #Auskommentieren Zeile
+    net.ipv4.ip forward=1
+
 #neustarten des Netzwerkdienstes um änderungen anzuwenden
 systemctl restart networking
+sysctl -p
 #anzeigen der IP Konfiguration
 ip a
