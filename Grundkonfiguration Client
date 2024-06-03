@@ -1,6 +1,21 @@
 #Grundkonfiguration eines Linux Clients
 #Alle Eingaben mit einem "*" sind variable Eingaben.
 
-
+#Festlegen des Hostnamens ohne neustart
 hostnamectl set-hostname "LxClient01"
+#neues Aufrufen der BASH --> neuer Hostname wird angezeigt
 bash
+
+#Öffnen der Datei "interfaces"
+nano /etc/network/interfaces
+#anpassen Inhalt "interfaces"
+    auto eth0
+    address "10.10.10.10"
+    netmask "255.255.255.0"
+    gateway "10.10.10.254"
+    dns-domain "schule.local
+    dns.search "linux.schule.local"
+    dns-nameservers "9.9.9.9"
+
+systemctl restart networking
+ip address
