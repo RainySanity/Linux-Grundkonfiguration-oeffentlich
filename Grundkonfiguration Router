@@ -6,7 +6,7 @@ hostnamectl set-hostname "LRtr01"
 #neues Aufrufen der BASH --> neuer Hostname wird angezeigt
 bash
 
-#Öffnen der Datei "interfaces"
+#Oeffnen der Datei "interfaces"
 nano /etc/network/interfaces
 #vergabe statischer ip addressen
     auto "eth0"
