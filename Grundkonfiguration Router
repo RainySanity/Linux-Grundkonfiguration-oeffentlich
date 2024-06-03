@@ -1,0 +1,25 @@
+#Grundkonfiguration eines Linux Routers
+#Alle Eingaben mit einem "*" sind variable Eingaben.
+
+#Festlegen des Hostnamens ohne neustart
+hostnamectl set-hostname "LRtr01"
+#neues Aufrufen der BASH --> neuer Hostname wird angezeigt
+bash
+
+#Öffnen der Datei "interfaces"
+nano /etc/network/interfaces
+#vergabe statischer ip addressen
+    auto "eth0"
+    iface "eth0" inet static
+        address "192.168.100.254/24"
+    
+    auto "eth1"
+    iface "eth1" inet static
+        address "10.10.10.10/30"
+
+    #eintragen einer persistenten statischen Route   
+    post-up ip route add "192.168.0.0/24" via "10.10.10.9"
+#neustarten des Netzwerkdienstes um änderungen anzuwenden
+systemctl restart networking
+#anzeigen der IP Konfiguration
+ip a
