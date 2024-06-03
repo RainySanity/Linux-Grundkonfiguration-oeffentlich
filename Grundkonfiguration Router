@@ -19,6 +19,7 @@ nano /etc/network/interfaces
 
     #eintragen einer persistenten statischen Route   
     post-up ip route add "192.168.0.0/24" via "10.10.10.9"
+    
 #neustarten des Netzwerkdienstes um änderungen anzuwenden
 systemctl restart networking
 #anzeigen der IP Konfiguration
