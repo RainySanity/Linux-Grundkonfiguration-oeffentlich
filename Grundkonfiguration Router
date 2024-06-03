@@ -23,7 +23,7 @@ nano /etc/network/interfaces
 
     #Routing aktiviern
     nano /etc/sysctl.conf
-    #Auskommentieren der Zeile
+    #Einkommentieren der Zeile
     net.ipv4.ip forward=1
 
 #neustarten des Netzwerkdienstes um änderungen anzuwenden
