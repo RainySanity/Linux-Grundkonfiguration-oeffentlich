@@ -1,2 +1,6 @@
+#Grundkonfiguration eines Linux Clients
+#Alle Eingaben mit einem "*" sind variable Eingaben.
+
+
 hostnamectl set-hostname "LxClient01"
 bash
