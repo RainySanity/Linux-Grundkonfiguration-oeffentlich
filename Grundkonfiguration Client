@@ -19,5 +19,8 @@ nano /etc/network/interfaces
         dns.search "linux.schule.local"
         dns-nameservers "9.9.9.9"
 
+#neustarten des Netzwerkdienstes um änderungen anzuwenden
 systemctl restart networking
+
+#anzeigen der IP Konfiguration
 ip address
