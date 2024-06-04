@@ -17,5 +17,9 @@ nano /etc/network/interfaces
 #neustarten des Netzwerkdienstes um änderungen anzuwenden
 systemctl restart networking
 
+#anweisen des Clients eine DHCP Adresse zu beziehen
+dhclient "eth0"
+
 #anzeigen der IP Konfiguration
 ip address
+

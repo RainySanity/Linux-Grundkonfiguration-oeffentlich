@@ -6,18 +6,51 @@ hostnamectl set-hostname "LRtrDHCP01"
 #neues Aufrufen der BASH --> neuer Hostname wird angezeigt
 bash
 
+#vergabe statischer ip addressen
+    auto "eth0"
+    iface "eth0" inet static
+        address "172.17.17.254/24"
 
-
-
-
-
-
-
-
-
+ #Routing aktiviern
+    nano /etc/sysctl.conf
+    #Einkommentieren der Zeile
+    net.ipv4.ip forward=1
 
 #neustarten des Netzwerkdienstes um änderungen anzuwenden
 systemctl restart networking
 sysctl -p
 #anzeigen der IP Konfiguration
 ip a
+
+#Festlegen der Schnittstell des DHCP Services
+nano /etc/default/isc-dhcp-server
+    INTERFACESv4="eth0"
+    INTERFACESv6=""
+
+#Anpassen der DHCP Services | "-l" Zeigt Zeilen Nummern an 
+nano /etc/dhcp/dhcpd.conf -l
+
+#Festlegen Globaler Domain-Name & DNS Server
+#Zeile 7
+option domain-name "schule.IT";
+option domain-name-servers "1.1.1.1";
+
+#Festlegen Subnetz, Festlegen Range der zu vergebenen IP Adressen, Festlegen DNS Server, Festlegen Domainname
+#Festlegen Gateway, Festlegen Broadcast Adresse, Festlegen Lease Time
+#Zeile 50 
+subnet "172.17.17.0" netmask "255.255.255.0" {
+    range "172.17.17.1 172.17.17.253;
+    option domain-name-servers "9.9.9.9";
+    option domain-name "schule.local";
+    option routers "172.17.17.254";
+#option broadcast-address "10.5.5.31;
+    default-lease-time "3600";
+#max-lease-time 7200;
+}
+
+#neustarten des DHCP Dienstes um änderungen anzuwenden
+systemctl restart isc-dhcp-server.service
+systemctl status isc-dhcp-server.service
+
+#DHCP Server beim Neustart automatisch starten
+systemctl enable isc-dhcp-server
