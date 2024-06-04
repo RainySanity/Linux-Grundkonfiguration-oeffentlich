@@ -1,0 +1,27 @@
+#Konfiguration eines Linux Routers mit DHCP und Relay Agent
+#Alle Eingaben mit einem "*" sind variable Eingaben.
+
+#Festlegen des Hostnamens ohne neustart
+hostnamectl set-hostname "LRtrDHCP01"
+#neues Aufrufen der BASH --> neuer Hostname wird angezeigt
+bash
+
+#vergabe statischer ip addressen
+    auto "eth0"
+    iface "eth0" inet static
+        address "172.17.17.254/24"
+
+
+#Routing aktiviern
+    nano /etc/sysctl.conf
+    #Einkommentieren der Zeile
+    net.ipv4.ip forward=1
+
+#neustarten des Netzwerkdienstes um änderungen anzuwenden
+systemctl restart networking
+sysctl -p
+#anzeigen der IP Konfiguration
+ip a
+
+nano /etc/default/isc-dhcp-relay
+

@@ -9,16 +9,12 @@ bash
 #vergabe statischer ip addressen
     auto "eth0"
     iface "eth0" inet static
-        address "172.17.17.254/24"
+        address "192.168.200.1/24"
+        gateway "192.168.200.254"
 
- #Routing aktiviern
-    nano /etc/sysctl.conf
-    #Einkommentieren der Zeile
-    net.ipv4.ip forward=1
 
 #neustarten des Netzwerkdienstes um änderungen anzuwenden
 systemctl restart networking
-sysctl -p
 #anzeigen der IP Konfiguration
 ip a
 
@@ -38,8 +34,8 @@ option domain-name-servers "1.1.1.1";
 #Festlegen Subnetz, Festlegen Range der zu vergebenen IP Adressen, Festlegen DNS Server, Festlegen Domainname
 #Festlegen Gateway, Festlegen Broadcast Adresse, Festlegen Lease Time
 #Zeile 50 
-subnet "172.17.17.0" netmask "255.255.255.0" {
-    range "172.17.17.1 172.17.17.253;
+subnet "192.168.100.0" netmask "255.255.255.0" {
+    range "192.168.100.21 192.168.100.253;
     option domain-name-servers "9.9.9.9";
     option domain-name "schule.local";
     option routers "172.17.17.254";
