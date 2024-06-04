@@ -1,0 +1,23 @@
+#Konfiguration eines Linux Routers mit DHCP
+#Alle Eingaben mit einem "*" sind variable Eingaben.
+
+#Festlegen des Hostnamens ohne neustart
+hostnamectl set-hostname "LRtrDHCP01"
+#neues Aufrufen der BASH --> neuer Hostname wird angezeigt
+bash
+
+
+
+
+
+
+
+
+
+
+
+#neustarten des Netzwerkdienstes um änderungen anzuwenden
+systemctl restart networking
+sysctl -p
+#anzeigen der IP Konfiguration
+ip a
