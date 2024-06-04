@@ -6,7 +6,7 @@ hostnamectl set-hostname "LxClient01"
 #neues Aufrufen der BASH --> neuer Hostname wird angezeigt
 bash
 
-#Öffnen der Datei "interfaces"
+#oeffnen der Datei "interfaces"
 nano /etc/network/interfaces
 
 #anpassen Inhalt "interfaces"
@@ -19,7 +19,7 @@ nano /etc/network/interfaces
         dns.search "linux.schule.local"
         dns-nameservers "9.9.9.9"
 
-#neustarten des Netzwerkdienstes um änderungen anzuwenden
+#neustarten des Netzwerkdienstes um aenderungen anzuwenden
 systemctl restart networking
 
 #anzeigen der IP Konfiguration
