@@ -6,7 +6,7 @@ hostnamectl set-hostname "LxClient01"
 #neues Aufrufen der BASH --> neuer Hostname wird angezeigt
 bash
 
-#Öffnen der Datei "interfaces"
+#oeffnen der Datei "interfaces"
 nano /etc/network/interfaces
 
 #anpassen Inhalt "interfaces"
