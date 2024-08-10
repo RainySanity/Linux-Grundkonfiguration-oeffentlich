@@ -14,7 +14,7 @@ nano /etc/network/interfaces
     iface "eth0" inet dhcp
         
 
-#neustarten des Netzwerkdienstes um änderungen anzuwenden
+#neustarten des Netzwerkdienstes um aenderungen anzuwenden
 systemctl restart networking
 
 #anweisen des Clients eine DHCP Adresse zu beziehen
